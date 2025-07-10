@@ -766,11 +766,14 @@ async function main() {
     var chainToken = extractChainAndTokenId(window.location.href);
     var tokenId = chainToken.tokenId;
     var chain = chainToken.chain;
+    var leftContainer;
 
     // Setup left panel
     var footer = document.querySelector('footer');
     if(footer) footer.innerHTML = `<div id="left-panel-container" style="position: fixed;"></div>`+ footer.innerHTML;
-    var leftContainer = document.getElementById('left-panel-container'); console.log("leftContainer", leftContainer);
+
+    await new Promise(r => setTimeout(r, 1 * 100)); 
+    leftContainer = document.getElementById('left-panel-container'); console.log("leftContainer", leftContainer);
     
     setupLeftContainer(leftContainer);
     // let header = createHeaderPanel();
