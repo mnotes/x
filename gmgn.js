@@ -769,7 +769,7 @@ async function main() {
     var leftContainer;
 
     // Setup left panel
-    var footer = document.querySelector('footer');
+    var footer = document.querySelector('footer'); console.log("footer", footer);
     if(footer) footer.innerHTML = `<div id="left-panel-container" style="position: fixed;"></div>`+ footer.innerHTML;
 
     await new Promise(r => setTimeout(r, 1 * 100)); 
