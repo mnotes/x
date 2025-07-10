@@ -1,1 +1,901 @@
-(function(_0x522a56,_0x42d0d8){var _0x497158=_0x1612,_0x28ce58=_0x522a56();while(!![]){try{var _0x5a960b=parseInt(_0x497158(0x21b))/0x1*(-parseInt(_0x497158(0x23d))/0x2)+-parseInt(_0x497158(0x26d))/0x3*(parseInt(_0x497158(0x207))/0x4)+parseInt(_0x497158(0x1cb))/0x5+parseInt(_0x497158(0x245))/0x6+parseInt(_0x497158(0x217))/0x7*(parseInt(_0x497158(0x23e))/0x8)+-parseInt(_0x497158(0x240))/0x9*(parseInt(_0x497158(0x219))/0xa)+parseInt(_0x497158(0x28a))/0xb;if(_0x5a960b===_0x42d0d8)break;else _0x28ce58['push'](_0x28ce58['shift']());}catch(_0x4e129a){_0x28ce58['push'](_0x28ce58['shift']());}}}(_0x3fd6,0x215e7));const {createWorker}=Tesseract,worker=await createWorker('eng');var timeCanvases=null,leftPanelElement=null,saveTopPnlButton=null,saveTopHolderButton=null,fromTsInput=null,toTsInput=null,bgroup='';function showToast(_0x26730f,_0x2629f3=0xbb8){var _0x3ea67a=_0x1612;let _0x3774fa=document['getElementById'](_0x3ea67a(0x20c));!_0x3774fa&&(_0x3774fa=document['createElement'](_0x3ea67a(0x2a2)),_0x3774fa['id']='toast-container',Object[_0x3ea67a(0x21a)](_0x3774fa[_0x3ea67a(0x239)],{'position':'fixed','top':_0x3ea67a(0x2a8),'left':'400px','display':_0x3ea67a(0x29b),'flexDirection':_0x3ea67a(0x269),'gap':_0x3ea67a(0x2b1),'zIndex':0x270f}),document[_0x3ea67a(0x244)]['appendChild'](_0x3774fa));const _0x3b88f0=document[_0x3ea67a(0x25d)](_0x3ea67a(0x2a2));_0x3b88f0[_0x3ea67a(0x21d)]=_0x26730f,Object[_0x3ea67a(0x21a)](_0x3b88f0[_0x3ea67a(0x239)],{'backgroundColor':_0x3ea67a(0x2bc),'color':_0x3ea67a(0x265),'padding':_0x3ea67a(0x204),'borderRadius':_0x3ea67a(0x25b),'boxShadow':_0x3ea67a(0x203),'fontSize':_0x3ea67a(0x1d2),'opacity':0x0,'transition':_0x3ea67a(0x247)}),_0x3774fa['appendChild'](_0x3b88f0),requestAnimationFrame(()=>{var _0x59a13e=_0x3ea67a;_0x3b88f0[_0x59a13e(0x239)][_0x59a13e(0x215)]=0x1;}),setTimeout(()=>{var _0x277358=_0x3ea67a;_0x3b88f0['style'][_0x277358(0x215)]=0x0,_0x3b88f0['addEventListener'](_0x277358(0x22c),()=>{var _0x3d2ebb=_0x277358;_0x3b88f0['remove'](),_0x3774fa['childElementCount']===0x0&&_0x3774fa[_0x3d2ebb(0x2ac)]();});},_0x2629f3);}function appendSecondToDateString(_0x1680e9,_0x269647){var _0x2a4e25=_0x1612;switch(_0x1680e9[_0x2a4e25(0x285)]){case 0x7:return _0x269647?_0x1680e9+_0x2a4e25(0x216):_0x1680e9+_0x2a4e25(0x1eb);case 0xb:return _0x269647?_0x1680e9+'00':_0x1680e9+'59';default:return _0x1680e9;}}function convertToTimestamp(_0x2b80ce){var _0x453b82=_0x1612;const _0x3d81b5=/(\d{2})(\w{3})(\d{2})(\d{2})(\d{2})(?:(\d{2}))?/,_0x40c2b2=_0x2b80ce['match'](_0x3d81b5);if(!_0x40c2b2)return console[_0x453b82(0x298)](_0x453b82(0x1d8),_0x2b80ce),null;const [_0x5036d4,_0x141ca3,_0x2911df,_0x43e414,_0x1310e2,_0x1ec79e,_0x34449b]=_0x40c2b2,_0x1cc4cf=parseInt(_0x43e414,0xa)+0x7d0,_0x1371fd={'jan':0x0,'feb':0x1,'mar':0x2,'apr':0x3,'may':0x4,'jun':0x5,'jul':0x6,'aug':0x7,'sep':0x8,'oct':0x9,'nov':0xa,'dec':0xb},_0x3ad455=_0x1371fd[_0x2911df];if(_0x3ad455===undefined)return console[_0x453b82(0x298)](_0x453b82(0x287),_0x2911df),null;const _0x2c3a0d=_0x34449b?parseInt(_0x34449b,0xa):0x0,_0x1ff1af=new Date(Date[_0x453b82(0x2bb)](_0x1cc4cf,_0x3ad455,parseInt(_0x141ca3,0xa),parseInt(_0x1310e2,0xa),parseInt(_0x1ec79e,0xa),_0x2c3a0d));return _0x1ff1af['setUTCHours'](_0x1ff1af[_0x453b82(0x231)]()-0x7),Math['floor'](_0x1ff1af[_0x453b82(0x1ff)]()/0x3e8);}function formatDate(_0x246783){var _0x22d844=_0x1612,_0x443f05=new Date(_0x246783*0x3e8);return _0x443f05['toLocaleString'](_0x22d844(0x1f6),{'timeZone':_0x22d844(0x200),'month':'2-digit','day':_0x22d844(0x24c),'hour':_0x22d844(0x24c),'minute':_0x22d844(0x24c),'second':'2-digit','hour12':![]});}function round(_0x3318ac,_0x22cac0){var _0x4b7d4a=_0x1612;return Number(Math[_0x4b7d4a(0x27c)](_0x3318ac+'e'+_0x22cac0)+'e-'+_0x22cac0);}async function waitUtils(_0x1a33d5,_0x323fa7){return new Promise((_0x4d890a,_0x5e71c3)=>{const _0x2c7f9e=setInterval(()=>{_0x1a33d5()&&(clearInterval(_0x2c7f9e),_0x4d890a());},0x3e8);setTimeout(()=>{var _0x9a4d5=_0x1612;clearInterval(_0x2c7f9e),_0x5e71c3(new Error(_0x9a4d5(0x1ce)));},_0x323fa7);});}function addStyleToHead(_0x3c9b71){var _0x393dac=_0x1612;const _0x32b7ea=document['createElement'](_0x393dac(0x239));_0x32b7ea[_0x393dac(0x262)]=_0x3c9b71,document[_0x393dac(0x229)][_0x393dac(0x27e)](_0x32b7ea);}function setupLeftContainer(_0x54f03c){var _0x4b9e16=_0x1612;_0x54f03c[_0x4b9e16(0x239)][_0x4b9e16(0x290)]='10px',_0x54f03c[_0x4b9e16(0x239)][_0x4b9e16(0x268)]=_0x4b9e16(0x263),_0x54f03c['style'][_0x4b9e16(0x242)]=_0x4b9e16(0x277);}function setupHeaderStyle(_0x43adcf){var _0x44dcf1=_0x1612;_0x43adcf['style'][_0x44dcf1(0x1d9)]='100%',_0x43adcf[_0x44dcf1(0x239)][_0x44dcf1(0x253)]='30px',_0x43adcf[_0x44dcf1(0x239)][_0x44dcf1(0x297)]=_0x44dcf1(0x2b4),_0x43adcf[_0x44dcf1(0x239)][_0x44dcf1(0x28c)]=_0x44dcf1(0x2b1);}function createButton(_0x5c3100,_0x1ac88f){var _0x4a073c=_0x1612;let _0x580d51=document[_0x4a073c(0x25d)](_0x4a073c(0x276));return _0x580d51['id']=_0x5c3100,_0x580d51[_0x4a073c(0x262)]=_0x1ac88f,_0x580d51[_0x4a073c(0x239)][_0x4a073c(0x261)]=_0x4a073c(0x220),_0x580d51[_0x4a073c(0x239)][_0x4a073c(0x27f)]=_0x4a073c(0x292),_0x580d51;}function createInputText(_0x5d8bb8){var _0x29d5f2=_0x1612;let _0x70b4de=document[_0x29d5f2(0x25d)](_0x29d5f2(0x1cf));return _0x70b4de['id']=_0x5d8bb8,_0x70b4de[_0x29d5f2(0x29d)]='text',_0x70b4de[_0x29d5f2(0x239)][_0x29d5f2(0x261)]='1px\x20solid\x20white',_0x70b4de[_0x29d5f2(0x239)]['padding']=_0x29d5f2(0x292),_0x70b4de['style'][_0x29d5f2(0x1d9)]=_0x29d5f2(0x26f),_0x70b4de[_0x29d5f2(0x239)][_0x29d5f2(0x253)]=_0x29d5f2(0x201),_0x70b4de[_0x29d5f2(0x239)]['color']=_0x29d5f2(0x2b4),_0x70b4de[_0x29d5f2(0x239)]['backgroundColor']=_0x29d5f2(0x205),_0x70b4de[_0x29d5f2(0x239)]['fontSize']='10px',_0x70b4de[_0x29d5f2(0x239)]['marginLeft']=_0x29d5f2(0x292),_0x70b4de[_0x29d5f2(0x243)][_0x29d5f2(0x28d)]('custom-placeholder'),_0x70b4de;}function createHeaderPanel(){var _0x12663d=_0x1612;let _0x35edeb=document[_0x12663d(0x25d)](_0x12663d(0x2a2));_0x35edeb['id']=_0x12663d(0x25a),setupHeaderStyle(_0x35edeb),saveTopSoonButton=createButton('save-top-soon-btn','💾\x20#Soon'),saveTopSoonButton['onclick']=handleSaveTopSoonButton,_0x35edeb[_0x12663d(0x27e)](saveTopSoonButton),saveTopPnlButton=createButton(_0x12663d(0x22b),'💾\x20#PNLs'),saveTopPnlButton[_0x12663d(0x22a)]=handleSaveTopPnlButton,_0x35edeb[_0x12663d(0x27e)](saveTopPnlButton),saveTopHolderButton=createButton(_0x12663d(0x1df),_0x12663d(0x23f)),saveTopHolderButton['onclick']=handleSaveTopHolderButton,_0x35edeb[_0x12663d(0x27e)](saveTopHolderButton),fromTsInput=createInputText('from-ts'),fromTsInput[_0x12663d(0x260)]='Type\x20\x22s\x22\x20to\x20fill',_0x35edeb['appendChild'](fromTsInput),toTsInput=createInputText('to-ts'),toTsInput[_0x12663d(0x260)]=_0x12663d(0x23a);;_0x35edeb[_0x12663d(0x27e)](toTsInput);let _0x3f1338=createButton(_0x12663d(0x21e),'lọc');return _0x3f1338[_0x12663d(0x239)][_0x12663d(0x22d)]=_0x12663d(0x292),_0x3f1338[_0x12663d(0x22a)]=handleTapCustomFilter,_0x35edeb[_0x12663d(0x27e)](_0x3f1338),_0x35edeb;}function createLeftPanel(){var _0x1e0410=_0x1612;let _0x3fdb6c=document[_0x1e0410(0x25d)](_0x1e0410(0x2a2));return _0x3fdb6c['id']='left-panel',_0x3fdb6c[_0x1e0410(0x239)][_0x1e0410(0x1d9)]=_0x1e0410(0x223),_0x3fdb6c[_0x1e0410(0x239)]['height']=_0x1e0410(0x223),_0x3fdb6c['style'][_0x1e0410(0x297)]='white',_0x3fdb6c[_0x1e0410(0x239)][_0x1e0410(0x290)]=_0x1e0410(0x209),_0x3fdb6c[_0x1e0410(0x239)][_0x1e0410(0x28c)]=_0x1e0410(0x2b1),_0x3fdb6c;}async function postWallets(_0x537024,_0x76b19b){var _0x1bf15f=_0x1612;let _0x45bdf2=_0x537024==='solana'?_0x1bf15f(0x22f):_0x537024;const _0x52beb0=new URLSearchParams();_0x52beb0[_0x1bf15f(0x296)](_0x1bf15f(0x1d3),_0x45bdf2);for(let _0x51553b=0x0;_0x51553b<_0x76b19b[_0x1bf15f(0x285)];_0x51553b++){_0x52beb0[_0x1bf15f(0x296)](_0x1bf15f(0x26a),_0x76b19b[_0x51553b]);}try{const _0x2e5d9b=await fetch(_0x1bf15f(0x2b7),{'method':_0x1bf15f(0x1ee),'headers':{'Content-Type':_0x1bf15f(0x224)},'body':_0x52beb0});if(!_0x2e5d9b['ok'])throw new Error(_0x1bf15f(0x206)+_0x2e5d9b[_0x1bf15f(0x1ef)]);const _0x23f8c6=await _0x2e5d9b[_0x1bf15f(0x232)]();return showToast('✅\x20'+_0x23f8c6+_0x1bf15f(0x1cd)),_0x23f8c6;}catch(_0x6648f5){showToast(_0x1bf15f(0x1fd)+_0x6648f5);throw _0x6648f5;}}async function fetchTransactions(_0x4a3dda,_0x51e79a,_0x5cfb08,_0x3ed0b9){var _0x162a05=_0x1612,_0x2d8074=0x64,_0x1de2f1=null;if(_0x4a3dda===_0x162a05(0x25f)||_0x4a3dda=='eth')_0x1de2f1=_0x162a05(0x258)+_0x4a3dda+'/'+_0x51e79a+_0x162a05(0x213)+_0x2d8074+'&from='+_0x5cfb08+_0x162a05(0x1e6)+_0x3ed0b9+_0x162a05(0x1ca);else _0x1de2f1=_0x162a05(0x295)+_0x4a3dda+'/'+_0x51e79a+_0x162a05(0x213)+_0x2d8074+_0x162a05(0x1c9)+_0x5cfb08+_0x162a05(0x1e6)+_0x3ed0b9+_0x162a05(0x1ca);;console[_0x162a05(0x236)](_0x162a05(0x218)+_0x1de2f1);var _0x587846=[];let _0x475708=await fetch(_0x1de2f1)[_0x162a05(0x2ba)](_0x14a7a2=>_0x14a7a2['json']())['then'](_0x2d2280=>_0x2d2280['data'][_0x162a05(0x1fb)]);if(_0x475708[_0x162a05(0x285)]===0x0)return addLog(_0x162a05(0x1fe)),[];addLog('+'+_0x475708[_0x162a05(0x285)]+_0x162a05(0x26e)),_0x587846[_0x162a05(0x2ae)](..._0x475708);let _0x588fd9=_0x475708[_0x475708[_0x162a05(0x285)]-0x1][_0x162a05(0x2b9)];while(!![]){if(_0x4a3dda==='base'||_0x4a3dda==_0x162a05(0x23b))_0x1de2f1=_0x162a05(0x258)+_0x4a3dda+'/'+_0x51e79a+_0x162a05(0x213)+_0x2d8074+'&from='+_0x5cfb08+_0x162a05(0x1e6)+_0x588fd9+_0x162a05(0x1ca);else _0x1de2f1=_0x162a05(0x295)+_0x4a3dda+'/'+_0x51e79a+'?limit='+_0x2d8074+'&from='+_0x5cfb08+'&to='+_0x588fd9+'&revert=false';_0x475708=await fetch(_0x1de2f1)[_0x162a05(0x2ba)](_0x482189=>_0x482189[_0x162a05(0x28f)]())[_0x162a05(0x2ba)](_0x5c9e5b=>_0x5c9e5b[_0x162a05(0x225)][_0x162a05(0x1fb)]);if(_0x475708[_0x162a05(0x285)]===0x0)break;addLog('+'+_0x475708[_0x162a05(0x285)]+'\x20items..'),_0x587846[_0x162a05(0x2ae)](..._0x475708);if(_0x588fd9===_0x475708[_0x475708[_0x162a05(0x285)]-0x1]['timestamp'])break;_0x588fd9=_0x475708[_0x475708[_0x162a05(0x285)]-0x1][_0x162a05(0x2b9)];}return _0x587846=_0x587846[_0x162a05(0x1e7)](),_0x587846;}async function fetchTopPnlTraders(_0x33dba1,_0x126cb9){var _0x13f284=_0x1612;const _0x19f0f4='https://gmgn.ai/vas/api/v1/token_traders/'+_0x33dba1+'/'+_0x126cb9+_0x13f284(0x289),_0x1194e8=await fetch(_0x19f0f4);if(!_0x1194e8['ok'])throw new Error(_0x13f284(0x206)+_0x1194e8[_0x13f284(0x1ef)]);const _0xe4ab5f=await _0x1194e8['json']();return console[_0x13f284(0x236)](_0x13f284(0x2b8),_0xe4ab5f),_0xe4ab5f[_0x13f284(0x225)]['list'];}async function fetchTopHolders(_0x1eb810,_0x5b3bc2){var _0x430b00=_0x1612;const _0x1872aa=_0x430b00(0x1f0)+_0x1eb810+'/'+_0x5b3bc2+_0x430b00(0x214),_0x800022=await fetch(_0x1872aa);if(!_0x800022['ok'])throw new Error(_0x430b00(0x206)+_0x800022[_0x430b00(0x1ef)]);const _0x201a98=await _0x800022[_0x430b00(0x28f)]();return console[_0x430b00(0x236)]('#holders',_0x201a98),_0x201a98[_0x430b00(0x225)][_0x430b00(0x24e)];}async function fetchTopSoon(_0x5d8298,_0x35c77e){var _0x2bd356=_0x1612,_0x1dee2f=_0x2bd356(0x295)+_0x5d8298+'/'+_0x35c77e+'?os=web&limit=100&maker=&revert=true';if(_0x5d8298=='eth'||_0x5d8298==_0x2bd356(0x25f))_0x1dee2f='https://gmgn.ai/api/v1/token_trades/'+_0x5d8298+'/'+_0x35c77e+_0x2bd356(0x282);const _0x483340=await fetch(_0x1dee2f);if(!_0x483340['ok'])throw new Error(_0x2bd356(0x206)+_0x483340['status']);const _0x536192=await _0x483340[_0x2bd356(0x28f)]();return console['log']('#soon',_0x536192),_0x536192[_0x2bd356(0x225)]['history'];}function addLog(_0x22fd3c){var _0x8981e5=_0x1612;leftPanelElement[_0x8981e5(0x262)]+=_0x22fd3c+'\x20';}function cropTransparent(_0x485c89){return new Promise(_0x53fe3a=>{var _0x35d4da=_0x1612;const _0x5a394a=document[_0x35d4da(0x25d)]('canvas'),_0xe68417=_0x5a394a[_0x35d4da(0x228)]('2d');_0x5a394a[_0x35d4da(0x1d9)]=_0x485c89[_0x35d4da(0x1d9)],_0x5a394a['height']=_0x485c89[_0x35d4da(0x253)],_0xe68417[_0x35d4da(0x212)](_0x485c89,0x0,0x0);const _0x3f2a54=_0xe68417[_0x35d4da(0x255)](0x0,0x0,_0x5a394a[_0x35d4da(0x1d9)],_0x5a394a[_0x35d4da(0x253)]),_0x457e47=_0x3f2a54[_0x35d4da(0x225)];let _0x1daac9=_0x5a394a[_0x35d4da(0x253)],_0x43c903=0x0,_0x4d2934=_0x5a394a['width'],_0x170455=0x0;for(let _0x4d6006=0x0;_0x4d6006<_0x5a394a[_0x35d4da(0x253)];_0x4d6006++){for(let _0x487cf3=0x0;_0x487cf3<_0x5a394a['width'];_0x487cf3++){let _0x5c3ba6=_0x457e47[(_0x4d6006*_0x5a394a[_0x35d4da(0x1d9)]+_0x487cf3)*0x4+0x3];if(_0x5c3ba6>0x0){if(_0x487cf3<_0x4d2934)_0x4d2934=_0x487cf3;if(_0x487cf3>_0x170455)_0x170455=_0x487cf3;if(_0x4d6006<_0x1daac9)_0x1daac9=_0x4d6006;if(_0x4d6006>_0x43c903)_0x43c903=_0x4d6006;}}}if(_0x170455<_0x4d2934||_0x43c903<_0x1daac9){_0x53fe3a(null);return;}const _0x39b154=_0x170455-_0x4d2934+0x1,_0x24ae7c=_0x43c903-_0x1daac9+0x1,_0x47fb19=document['createElement']('canvas'),_0x5db450=_0x47fb19['getContext']('2d');_0x47fb19['width']=_0x39b154,_0x47fb19[_0x35d4da(0x253)]=_0x24ae7c,_0x5db450[_0x35d4da(0x212)](_0x5a394a,_0x4d2934,_0x1daac9,_0x39b154,_0x24ae7c,0x0,0x0,_0x39b154,_0x24ae7c),_0x53fe3a(_0x47fb19[_0x35d4da(0x20e)](_0x35d4da(0x270)));});}function extractChainAndTokenId(_0x1578e2){var _0x5a22ff=_0x1612;const _0x2150e2=_0x1578e2[_0x5a22ff(0x1ec)]('?')[0x0];if(_0x2150e2[_0x5a22ff(0x1e4)](_0x5a22ff(0x281))>=0x0){const _0x55737c=_0x2150e2['split']('/'),_0x59baad=_0x55737c['pop']()[_0x5a22ff(0x1ec)]('_')['pop']();_0x55737c[_0x5a22ff(0x29e)]();const _0x191884=_0x55737c[_0x5a22ff(0x29e)]();return{'chain':_0x191884,'tokenId':_0x59baad};}return null;}async function canvasToTextUsingTesseract(_0x251813){const _0x18f3df=await cropTransparent(_0x251813);if(_0x18f3df===null)return console['error']('Cropped\x20canvas\x20is\x20null'),null;const {data:{text:_0x3eac1a}}=await worker['recognize'](_0x18f3df);return _0x3eac1a;}function getTradingViewFrame(){var _0x329c12=_0x1612,_0x43a677=document[_0x329c12(0x259)]('iframe');for(var _0x4c5b36=0x0;_0x4c5b36<_0x43a677[_0x329c12(0x285)];_0x4c5b36++){var _0x36f088=_0x43a677[_0x4c5b36];if(_0x36f088['id'][_0x329c12(0x221)](_0x329c12(0x1dc)))return _0x36f088;}return null;}function _0x1612(_0x3770b7,_0x2302bf){var _0x3fd6a5=_0x3fd6();return _0x1612=function(_0x1612f1,_0x16007e){_0x1612f1=_0x1612f1-0x1c9;var _0x9308d3=_0x3fd6a5[_0x1612f1];return _0x9308d3;},_0x1612(_0x3770b7,_0x2302bf);}function renderHtmlTable(_0x451c87,_0x3b6aca){var _0x35a316=_0x1612;bgroup=bgroup[_0x35a316(0x1ec)]('\x0a');var _0x126e7b=_0x35a316(0x1e9);const _0xdf4d35=new URL(window[_0x35a316(0x25e)]),_0x43e39e=_0xdf4d35[_0x35a316(0x286)][_0x35a316(0x24f)]('wl'),_0x3648d7=_0xdf4d35[_0x35a316(0x286)][_0x35a316(0x24f)](_0x35a316(0x288));console['log'](_0x35a316(0x1d1),_0x43e39e);for(var _0x4da707=0x0;_0x4da707<_0x451c87[_0x35a316(0x285)];_0x4da707++){var _0x234dc5=_0x451c87[_0x4da707];_0x234dc5['unrealized_profit']=parseFloat(_0x234dc5[_0x35a316(0x256)]),_0x234dc5[_0x35a316(0x267)]=parseFloat(_0x234dc5[_0x35a316(0x267)]);var _0x4e4495=_0x234dc5['maker'],_0x4afd2a=_0x4e4495['substring'](0x0,0x3)+_0x35a316(0x27a)+_0x4e4495[_0x35a316(0x23c)](_0x4e4495['length']-0x4);if(_0x4e4495==_0x3648d7)_0x4afd2a+=_0x35a316(0x293);if(_0x4e4495==_0x43e39e)_0x4afd2a+='\x20🔹';if(bgroup[_0x35a316(0x221)](_0x4e4495))_0x4afd2a+='\x20⚠️';var _0x80b3aa=formatDate(_0x234dc5['timestamp']),_0x422c6c=_0x234dc5[_0x35a316(0x267)]<0x0?_0x35a316(0x20d):_0x35a316(0x210),_0x4fbe67=_0x234dc5[_0x35a316(0x21c)]=='buy'?_0x35a316(0x1e2):'red',_0x3ffba2=_0x234dc5[_0x35a316(0x226)],_0x272a9b='';if(_0x3b6aca==='bsc')_0x272a9b=_0x35a316(0x238);else{if(_0x3b6aca===_0x35a316(0x22f))_0x272a9b=_0x35a316(0x230);else{if(_0x3b6aca==='eth')_0x272a9b='https://etherscan.io/tx';else _0x3b6aca===_0x35a316(0x25f)&&(_0x272a9b=_0x35a316(0x1da));}}_0x126e7b+=_0x35a316(0x2b0)+_0x80b3aa+_0x35a316(0x2b2)+_0x3b6aca+_0x35a316(0x1e0)+_0x234dc5[_0x35a316(0x249)]+_0x35a316(0x1f9)+_0x4afd2a+'</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22float:\x20right;\x22>'+replaceText(_0x234dc5[_0x35a316(0x21f)][_0x35a316(0x2a1)]())+_0x35a316(0x241)+_0x4fbe67+_0x35a316(0x1ed)+_0x234dc5[_0x35a316(0x21c)][_0x35a316(0x23c)](0x0,0x1)+_0x35a316(0x1f3)+prettyPrintNum(_0x234dc5['amount_usd'])+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20right;\x20\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22float:\x20left;\x20opacity:\x200.8;\x22>'+(_0x234dc5[_0x35a316(0x256)]!=0x0?prettyPrintNum(_0x234dc5[_0x35a316(0x256)]):'')+_0x35a316(0x27d)+_0x422c6c+_0x35a316(0x1fa)+prettyPrintNum(_0x234dc5[_0x35a316(0x267)])+_0x35a316(0x2ab)+_0x272a9b+'/'+_0x3ffba2+_0x35a316(0x1f9)+_0x3b6aca+_0x35a316(0x2a3),_0x234dc5[_0x35a316(0x1d6)][_0x35a316(0x285)]>0x0&&_0x234dc5[_0x35a316(0x1d6)][_0x35a316(0x1f2)](async _0x3f8340=>{var _0x5bbf4a=_0x35a316;if(_0x3f8340=='gmgn')_0x126e7b+=_0x5bbf4a(0x278);if(_0x3f8340=='photon')_0x126e7b+=_0x5bbf4a(0x284);if(_0x3f8340==_0x5bbf4a(0x1d0))_0x126e7b+=_0x5bbf4a(0x254);if(_0x3f8340==_0x5bbf4a(0x28e))_0x126e7b+=_0x5bbf4a(0x1f1);}),_0x126e7b+='</small>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20';}return _0x126e7b+=_0x35a316(0x237),_0x126e7b;}async function getCurrentSelectedTimeOnChart(){var _0x4c3e8a=_0x1612;if(!timeCanvases)return console[_0x4c3e8a(0x236)](_0x4c3e8a(0x29a)),null;for(var _0x2b18bc=0x0;_0x2b18bc<timeCanvases[_0x4c3e8a(0x285)];_0x2b18bc++){var _0x378e28=timeCanvases[_0x2b18bc],_0x2d0dd3=await canvasToTextUsingTesseract(_0x378e28);if(_0x2d0dd3===null){console['log']('Text\x20is\x20null');continue;}console[_0x4c3e8a(0x236)](_0x4c3e8a(0x250)+_0x2d0dd3);var _0x3f7960=_0x2d0dd3[_0x4c3e8a(0x1e8)](/'/g,'\x20');_0x3f7960=_0x3f7960['replace'](/ /g,'')['replace'](/:/g,''),_0x3f7960=_0x3f7960[_0x4c3e8a(0x2a0)](),console[_0x4c3e8a(0x236)](_0x4c3e8a(0x22e)+_0x3f7960);if(_0x3f7960[_0x4c3e8a(0x285)]!=0x7&&_0x3f7960[_0x4c3e8a(0x285)]!=0xb&&_0x3f7960['length']!=0xd){console[_0x4c3e8a(0x236)]('Date\x20text\x20is\x20invalid:',_0x3f7960,_0x3f7960[_0x4c3e8a(0x285)]);continue;}return _0x3f7960[_0x4c3e8a(0x273)]();}return null;}async function handleTapQuickFilter(){var _0x3aa057=_0x1612;leftPanelElement['innerHTML']='';let _0x5d05d4=await getCurrentSelectedTimeOnChart();if(_0x5d05d4===null){addLog('❌\x20Failed\x20to\x20get\x20date\x20text\x20from\x20canvas');return;}var _0x342852=convertToTimestamp(_0x5d05d4),_0x4ce4a6=_0x342852+0x3*0x3c,_0x40b295=extractChainAndTokenId(window[_0x3aa057(0x25e)][_0x3aa057(0x248)]),_0x539d6f=_0x40b295[_0x3aa057(0x222)],_0x2b05ff=_0x40b295[_0x3aa057(0x1d3)];await filterTransactions(_0x342852,_0x4ce4a6,_0x539d6f,_0x2b05ff);}async function handleTapQuickFilterToNow(){var _0x26e1a9=_0x1612;leftPanelElement['innerHTML']='';let _0x3f2a49=await getCurrentSelectedTimeOnChart();if(_0x3f2a49===null){addLog(_0x26e1a9(0x2b5));return;}var _0x3fb852=convertToTimestamp(_0x3f2a49),_0x41e91b=Math['floor'](Date[_0x26e1a9(0x291)]()/0x3e8),_0x37b01f=extractChainAndTokenId(window['location'][_0x26e1a9(0x248)]),_0x1245d3=_0x37b01f[_0x26e1a9(0x222)],_0x3b66d6=_0x37b01f[_0x26e1a9(0x1d3)];await filterTransactions(_0x3fb852,_0x41e91b,_0x1245d3,_0x3b66d6);}function _0x3fd6(){var _0x3fb110=['top_holder','❌\x20Error\x20posting\x20wallets:\x20','❌\x20No\x20items\x20found','getTime','Asia/Ho_Chi_Minh','20px','❌\x20timeAxisElement\x20is\x20not\x20ready','0\x202px\x2010px\x20rgba(0,0,0,0.2)','10px\x2020px','#2b2d33','HTTP\x20error!\x20status:\x20','321268qdQsxT','map','11px','toLocaleString','getElementById','toast-container','#e26d81','toDataURL','\x20wallets','#5dbd6c','<div\x20id=\x22left-panel-container\x22\x20style=\x22position:\x20fixed;\x22></div>','drawImage','?limit=','?limit=100&cost=20&orderby=amount_percentage&direction=desc','opacity','000000','693DPwbQD','Fetch\x20URL:\x20','15810mOJNNk','assign','8806aGsjhr','event','innerText','filter-btn','maker_token_tags','1px\x20solid\x20white','includes','tokenId','100%','application/x-www-form-urlencoded','data','tx_hash','❌\x20From\x20timestamp\x20is\x20greater\x20than\x20to\x20timestamp','getContext','head','onclick','save-top-pnl-btn','transitionend','marginLeft','Date\x20text:\x20','sol','https://solscan.io/tx','getUTCHours','text','NumberFormat','Save\x20to\x20Solbase','sign','log','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</tbody>\x0a\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20','https://bscscan.com/tx','style','Type\x20\x22e\x22\x20to\x20fill','eth','substring','44XEehJZ','15416MaCPao','💾\x20#Holders','927OXweif','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20center;\x20color:\x20','overflowX','classList','body','1501242jShhZv','footer','opacity\x200.3s\x20ease','href','maker','address','Error\x20waiting\x20for\x20TradingView\x20frame:','2-digit','✔\x20Soon','list','get','Got\x20text\x20from\x20canvas:\x20','padStart','\x20unique\x20transactions.','height','<img\x20src=\x22/static/img/brand/bullx_sm.png\x22\x20style=\x22width:\x209px;\x20height:\x209px;\x20float:\x20right;\x22/>','getImageData','unrealized_profit','value','https://gmgn.ai/api/v1/token_trades/','getElementsByTagName','action-header','8px','sniper','createElement','location','base','placeholder','border','innerHTML','scroll','getSeconds','#fff','❌\x20Error\x20saving\x20wallets','realized_profit','overflowY','column-reverse','items','addEventListener','querySelector','9UIvAnP','\x20items..','85px','image/png','❌\x20From\x20timestamp\x20is\x20invalid','\x20unique\x20wallets\x20&nbsp;\x20&nbsp;\x20','toLowerCase','✔\x20Holders','replaceAll','button','hidden','<img\x20src=\x22/static/img/brand/gmgn_sm.png\x22\x20style=\x22width:\x209px;\x20height:\x209px;\x20float:\x20right;\x22/>','slice','...','save-solbase-btn','round','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20','appendChild','padding','✅\x20Saved!','token','?os=web&limit=100&maker=&revert=true','format','<img\x20src=\x22/static/img/brand/photon_sm.png\x22\x20style=\x22width:\x209px;\x20height:\x209px;\x20float:\x20right;\x22/>','length','searchParams','Invalid\x20month:','ref','?limit=100&orderby=realized_profit&direction=desc','2408978ZZFJId','left-panel-container','paddingLeft','add','trojan','json','fontSize','now','2px','\x20👥','canvas','https://gmgn.ai/vas/api/v1/token_trades/','append','color','error','On\x20tap\x20e','❌\x20timeCanvases\x20is\x20not\x20ready','flex','✔\x20PNL','type','pop','dev_team','trim','toString','div','tx</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<small\x20style=\x22float:\x20right;\x20margin:\x203px\x203px\x200\x200\x22>','<br/>🔍\x20Found\x20','⏳\x20Saving...','❌\x20From\x20timestamp\x20is\x20empty','floor','45px','getFullYear','getMinutes','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20let;\x20padding-left:\x203px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22','remove','abs','push','leftContainer','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr\x20style=\x22border-bottom:\x201px\x20solid\x20#2b2d33;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20padding-left:\x205px;\x22>\x20','10px','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20padding-left:\x204px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://gmgn.ai/','getDate','white','❌\x20Failed\x20to\x20get\x20date\x20text\x20from\x20canvas','short','https://xbase.site/wls/add-wallet-redis-manual','#pnls','timestamp','then','UTC','#333','&from=','&revert=false','371135bxWCYt','On\x20tap\x20r','\x20wallets\x20saved!','Timeout\x20waiting\x20for\x20condition','input','bullx','urlMaker','14px','chain','en-US','On\x20tap\x20s','maker_tags','complete','Invalid\x20date\x20format:','width','https://basescan.org/tx','\x20canvases','tradingview_','\x0a\x20\x20\x20\x20\x20\x20\x20\x20#__next{padding-left:\x20400px;}\x0a\x20\x20\x20\x20\x20\x20\x20\x20#left-panel-container{width:\x20400px;\x20height:\x20100%;\x20left:\x200;\x20top:\x2010px;\x20font-size:\x2012px;\x20border-right:\x201px\x20solid\x20#222;\x20position:\x20fixed;\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20.custom-placeholder::placeholder\x20{\x20font-size:\x2011px;\x20}\x0a\x20\x20\x20\x20','❌\x20To\x20timestamp\x20is\x20invalid','save-top-holder-btn','/address/','keydown','green','getElementsByClassName','indexOf','key','&to=','reverse','replace','\x0a\x20\x20\x20\x20<table\x20style=\x22width:\x20100%;\x20border-collapse:\x20collapse;\x20text-align:\x20left;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr\x20style=\x22border-bottom:\x202px\x20solid\x20#2b2d33;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20width:\x2090px;\x20padding-left:\x2010px;\x22>Date</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20center;\x22>Maker</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20center;\x22>Type</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20right;\x22>$Buy</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20right;\x22>$Pnl</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20center;\x20width:\x2053px;\x22>Tx</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<tbody>\x0a\x20\x20\x20\x20','chart-markup-table\x20time-axis','235959','split',';\x20font-weight:\x20bold;\x22>','POST','status','https://gmgn.ai/vas/api/v1/token_holders/','<img\x20src=\x22/static/img/brand/trojan_sm.png\x22\x20style=\x22width:\x209px;\x20height:\x209px;\x20float:\x20right;\x22/>','forEach','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x201px\x20solid\x20#2b2d33;\x20text-align:\x20right;\x22>','<span\x20style=\x27opacity:\x200.8\x27><small>✅</small>\x202/2:\x20ChartView\x20is\x20ok.\x20<br/>Press\x20\x22f\x22\x20to\x20fetch\x20transactions.</span>','contentDocument','en-GB','<span\x20style=\x22opacity:\x200.8\x22><small>✅</small>\x201/2:\x20Left\x20panel\x20is\x20ok.</span><br/>','Please\x20wait\x20...','\x22\x20target=\x22_blank\x22>',';\x22>','history'];_0x3fd6=function(){return _0x3fb110;};return _0x3fd6();}async function filterTransactions(_0x1b555a,_0x162b65,_0x406bd6,_0x914b26){var _0x1be742=_0x1612,_0x4ae3b3=await fetchTransactions(_0x914b26,_0x406bd6,_0x1b555a,_0x162b65);let _0x17ccb2=_0x4ae3b3[_0x1be742(0x208)](_0x25d452=>_0x25d452[_0x1be742(0x249)]);_0x17ccb2=[...new Set(_0x17ccb2)],addLog('<br/>🔍\x20Found\x20'+_0x4ae3b3[_0x1be742(0x285)]+_0x1be742(0x252)),addLog(_0x1be742(0x2a4)+_0x17ccb2[_0x1be742(0x285)]+_0x1be742(0x272)),addLog(renderHtmlTable(_0x4ae3b3,_0x914b26)),saveButton=document[_0x1be742(0x20b)](_0x1be742(0x27b)),saveButton['onclick']=async function(){var _0x54a9c5=_0x1be742;const _0x4ac881=0x3e7,_0x35bca0=[];for(let _0x3dbff1=0x0;_0x3dbff1<allWallets[_0x54a9c5(0x285)];_0x3dbff1+=_0x4ac881){_0x35bca0[_0x54a9c5(0x2ae)](allWallets['slice'](_0x3dbff1,_0x3dbff1+_0x4ac881));}saveButton[_0x54a9c5(0x262)]=_0x54a9c5(0x2a5)+allWallets[_0x54a9c5(0x285)]+'\x20wallets';try{for(const _0x17de34 of _0x35bca0){await postWallets(_0x914b26,_0x17de34);}}catch(_0xd1d061){addLog(_0x54a9c5(0x266));}saveButton[_0x54a9c5(0x262)]=_0x54a9c5(0x280),setTimeout(()=>{var _0x2c79d8=_0x54a9c5;saveButton['innerHTML']=_0x2c79d8(0x234);},0x3e8);};}function registerEvents(_0x569a03){_0x569a03['forEach'](_0x1846b1=>{var _0x20969d=_0x1612;_0x1846b1[_0x20969d(0x26b)](_0x20969d(0x1e1),handleTapFEvent);});}async function handleTapFEvent(_0x18165f){var _0xfbb30a=_0x1612;if(_0x18165f[_0xfbb30a(0x1e5)]==='f')await handleTapQuickFilter();else{if(_0x18165f[_0xfbb30a(0x1e5)]==='d')await handleTapQuickFilterToNow();else{if(_0x18165f[_0xfbb30a(0x1e5)]==='s'){console['log'](_0xfbb30a(0x1d5)),fromTsInput[_0xfbb30a(0x257)]=_0xfbb30a(0x1f8);let _0x411aa2=await getCurrentSelectedTimeOnChart();if(_0x411aa2===null){showToast(_0xfbb30a(0x2b5));return;}fromTsInput[_0xfbb30a(0x257)]=appendSecondToDateString(_0x411aa2,!![]);}else{if(_0x18165f[_0xfbb30a(0x1e5)]==='e'){console[_0xfbb30a(0x236)](_0xfbb30a(0x299)),toTsInput['value']=_0xfbb30a(0x1f8);let _0x2272a3=await getCurrentSelectedTimeOnChart();if(_0x2272a3===null){showToast(_0xfbb30a(0x2b5));return;}toTsInput[_0xfbb30a(0x257)]=appendSecondToDateString(_0x2272a3,![]);}else _0x18165f[_0xfbb30a(0x1e5)]==='r'&&(console['log'](_0xfbb30a(0x1cc)),await handleTapCustomFilter());}}}}async function handleSaveTopPnlButton(){var _0x1b6409=_0x1612;const _0xd16c51=extractChainAndTokenId(window[_0x1b6409(0x25e)]['href']),_0x4b8d6a=_0xd16c51[_0x1b6409(0x222)],_0x51af8b=_0xd16c51['chain'];let _0x10bba8=await fetchTopPnlTraders(_0x51af8b,_0x4b8d6a),_0x145335=_0x10bba8[_0x1b6409(0x208)](_0x139791=>_0x139791['address']);_0x145335=[...new Set(_0x145335)],saveTopPnlButton[_0x1b6409(0x262)]='⏳\x20Saving...'+_0x145335[_0x1b6409(0x285)]+_0x1b6409(0x20f);try{await postWallets(_0x51af8b,_0x145335);}catch(_0x2e7e1d){addLog(_0x1b6409(0x266));}saveTopPnlButton['innerHTML']=_0x1b6409(0x280),setTimeout(()=>{var _0x5c8d3a=_0x1b6409;saveTopPnlButton['innerHTML']=_0x5c8d3a(0x29c);},0x3e8);}async function handleSaveTopHolderButton(){var _0x28f763=_0x1612;const _0x49e2dc=extractChainAndTokenId(window[_0x28f763(0x25e)][_0x28f763(0x248)]),_0x4ec605=_0x49e2dc[_0x28f763(0x222)],_0x1f89c4=_0x49e2dc[_0x28f763(0x1d3)];let _0x2afddd=await fetchTopHolders(_0x1f89c4,_0x4ec605),_0x2f98cb=_0x2afddd['map'](_0x1c8d19=>_0x1c8d19[_0x28f763(0x24a)]);_0x2f98cb=[...new Set(_0x2f98cb)],saveTopHolderButton[_0x28f763(0x262)]=_0x28f763(0x2a5)+_0x2f98cb[_0x28f763(0x285)]+_0x28f763(0x20f);try{await postWallets(_0x1f89c4,_0x2f98cb);}catch(_0x4e877e){addLog(_0x28f763(0x266));}saveTopHolderButton[_0x28f763(0x262)]=_0x28f763(0x280),setTimeout(()=>{var _0x316cb1=_0x28f763;saveTopHolderButton['innerHTML']=_0x316cb1(0x274);},0x3e8);}async function handleSaveTopSoonButton(){var _0x2cf85b=_0x1612;const _0xddb28d=extractChainAndTokenId(window[_0x2cf85b(0x25e)][_0x2cf85b(0x248)]),_0x56326e=_0xddb28d[_0x2cf85b(0x222)],_0x1685e8=_0xddb28d[_0x2cf85b(0x1d3)];let _0x4f9228=await fetchTopSoon(_0x1685e8,_0x56326e),_0x3f0e7e=_0x4f9228[_0x2cf85b(0x208)](_0x2cbdeb=>_0x2cbdeb[_0x2cf85b(0x249)]);_0x3f0e7e=[...new Set(_0x3f0e7e)],saveTopSoonButton[_0x2cf85b(0x262)]='⏳\x20Saving...'+_0x3f0e7e[_0x2cf85b(0x285)]+_0x2cf85b(0x20f);try{await postWallets(_0x1685e8,_0x3f0e7e);}catch(_0x22a843){addLog('❌\x20Error\x20saving\x20wallets');}saveTopSoonButton['innerHTML']=_0x2cf85b(0x280),setTimeout(()=>{var _0xae9b3c=_0x2cf85b;saveTopSoonButton[_0xae9b3c(0x262)]=_0xae9b3c(0x24d);},0x3e8);}function getCurrentTimeFormat(){var _0x4cf07c=_0x1612,_0xbb3abc=new Date(),_0x103534=_0xbb3abc[_0x4cf07c(0x2b3)](),_0x6e72de=_0xbb3abc[_0x4cf07c(0x20a)](_0x4cf07c(0x1d4),{'month':_0x4cf07c(0x2b6)})['toLowerCase'](),_0x4b8407=_0xbb3abc[_0x4cf07c(0x2a9)]()['toString']()[_0x4cf07c(0x279)](-0x2),_0x3aafbf=_0xbb3abc['getHours']()['toString']()[_0x4cf07c(0x251)](0x2,'0'),_0x437f27=_0xbb3abc[_0x4cf07c(0x2aa)]()[_0x4cf07c(0x2a1)]()[_0x4cf07c(0x251)](0x2,'0'),_0x5c619a=_0xbb3abc[_0x4cf07c(0x264)]()[_0x4cf07c(0x2a1)]()['padStart'](0x2,'0');return''+_0x103534+_0x6e72de+_0x4b8407+_0x3aafbf+_0x437f27+_0x5c619a;}async function handleTapCustomFilter(){var _0x388b93=_0x1612;let _0x4692f6=fromTsInput['value'];if(_0x4692f6===''){showToast(_0x388b93(0x2a6));return;}let _0x5e6eba=convertToTimestamp(_0x4692f6);if(_0x5e6eba===null){showToast(_0x388b93(0x271));return;}let _0x3725d3=toTsInput[_0x388b93(0x257)];if(_0x3725d3===''){showToast('❌\x20To\x20timestamp\x20is\x20empty');return;}let _0x515c69=convertToTimestamp(_0x3725d3);if(_0x515c69===null){showToast(_0x388b93(0x1de));return;}if(_0x5e6eba>_0x515c69){showToast(_0x388b93(0x227));return;}leftPanelElement[_0x388b93(0x262)]='';var _0x3522fd=_0x5e6eba,_0x1ad052=_0x515c69,_0x235d34=extractChainAndTokenId(window[_0x388b93(0x25e)][_0x388b93(0x248)]),_0x1a4f21=_0x235d34['tokenId'],_0x2c8931=_0x235d34['chain'];await filterTransactions(_0x3522fd,_0x1ad052,_0x1a4f21,_0x2c8931);}async function main(){var _0xba89b6=_0x1612;addStyleToHead(_0xba89b6(0x1dd));var _0x410f5f=extractChainAndTokenId(window[_0xba89b6(0x25e)][_0xba89b6(0x248)]),_0x48aee7=_0x410f5f['tokenId'],_0x150849=_0x410f5f['chain'],_0x1f86ca=document[_0xba89b6(0x26c)](_0xba89b6(0x246));if(_0x1f86ca)_0x1f86ca[_0xba89b6(0x262)]=_0xba89b6(0x211)+_0x1f86ca[_0xba89b6(0x262)];var _0x3d536d=document[_0xba89b6(0x20b)](_0xba89b6(0x28b));console['log'](_0xba89b6(0x2af),_0x3d536d),setupLeftContainer(_0x3d536d),leftPanelElement=createLeftPanel(),_0x3d536d[_0xba89b6(0x27e)](leftPanelElement),addLog(_0xba89b6(0x1f7));try{await waitUtils(()=>getTradingViewFrame()!=null,0x2710);}catch(_0x45cf8c){console['error'](_0xba89b6(0x24b),_0x45cf8c),window[_0xba89b6(0x25e)]['reload'](!![]);return;}var _0x527c04=getTradingViewFrame();await waitUtils(()=>_0x527c04[_0xba89b6(0x1f5)]['readyState']===_0xba89b6(0x1d7),0x2710),await waitUtils(()=>_0x527c04[_0xba89b6(0x1f5)][_0xba89b6(0x1e3)](_0xba89b6(0x1ea))[_0xba89b6(0x285)]>0x0,0x2710),addLog(_0xba89b6(0x1f4));var _0x264d60=_0x527c04[_0xba89b6(0x1f5)]['getElementsByClassName'](_0xba89b6(0x1ea))[0x0];if(_0x264d60==null){addLog(_0xba89b6(0x202));return;}timeCanvases=_0x264d60[_0xba89b6(0x259)](_0xba89b6(0x294)),console[_0xba89b6(0x236)]('Found\x20'+timeCanvases[_0xba89b6(0x285)]+_0xba89b6(0x1db)),registerEvents([_0x527c04[_0xba89b6(0x1f5)]]);}main();function replaceText(_0x444e31){var _0x390ee9=_0x1612;return _0x444e31=_0x444e31[_0x390ee9(0x275)](_0x390ee9(0x29f),'👥'),_0x444e31=_0x444e31[_0x390ee9(0x275)](_0x390ee9(0x1fc),'🏅'),_0x444e31=_0x444e31[_0x390ee9(0x275)](_0x390ee9(0x25c),'⌖'),_0x444e31=_0x444e31[_0x390ee9(0x275)](',','\x20'),_0x444e31;}function prettyPrintNum(_0x22084e){var _0x5784ce=_0x1612;if(_0x22084e<-0x1)return prettyNum(Math['round'](_0x22084e));if(_0x22084e<0.1)return formatNum2(_0x22084e);else{if(_0x22084e>=0.1&&_0x22084e<0x1)return formatNum1(_0x22084e);else return prettyNum(Math[_0x5784ce(0x27c)](_0x22084e));}}function formatNum(_0x4d5166){return Math['round'](_0x4d5166*0x3e8)/0x3e8;}function formatNum1(_0x10c2be){return Math['round'](_0x10c2be*0xa)/0xa;}function formatNum2(_0x349a0a){var _0x3d9a63=_0x1612;return Math[_0x3d9a63(0x27c)](_0x349a0a*0x64)/0x64;}function prettyNum(_0x59974d){var _0x5a57ac=_0x1612;return _0x59974d=Math[_0x5a57ac(0x27c)](_0x59974d),new Intl[(_0x5a57ac(0x233))]()[_0x5a57ac(0x283)](_0x59974d);}function kFormatter(_0x7ab2de){var _0x407048=_0x1612;if(_0x7ab2de>0x3b9ac9ff||_0x7ab2de<-0x3b9ac9ff)return'tooBig';else{if(_0x7ab2de>0xf423f||_0x7ab2de<-0xf423f)return Math['sign'](_0x7ab2de)*(Math[_0x407048(0x2ad)](_0x7ab2de)/0xf4240)['toFixed'](0x1)+'M';else return Math[_0x407048(0x2ad)](_0x7ab2de)>0x3e7?Math[_0x407048(0x235)](_0x7ab2de)*(Math[_0x407048(0x2ad)](_0x7ab2de)/0x3e8)['toFixed'](0x1)+'k':Math[_0x407048(0x27c)](Math['sign'](_0x7ab2de)*Math[_0x407048(0x2ad)](_0x7ab2de));}}function prettyPeriod(_0x584eec){var _0x559554=_0x1612,_0x3722a8=Math['floor'](_0x584eec),_0x2d3b11=_0x3722a8/0x1e13380;if(_0x2d3b11>0x1)return Math['floor'](_0x2d3b11)+'\x20y';_0x2d3b11=_0x3722a8/0x15180;if(_0x2d3b11>0x1)return Math['floor'](_0x2d3b11)+'\x20d';_0x2d3b11=_0x3722a8/0xe10;if(_0x2d3b11>0x1)return Math[_0x559554(0x2a7)](_0x2d3b11)+'\x20h';_0x2d3b11=_0x3722a8/0x3c;if(_0x2d3b11>0x1)return Math[_0x559554(0x2a7)](_0x2d3b11)+'\x20m';return Math['floor'](_0x3722a8)+'s';}function prettyPeroid(_0x508bb8){var _0x3a4fb5=_0x1612;if(_0x508bb8<0x3c)return Math[_0x3a4fb5(0x27c)](_0x508bb8)+'s';if(_0x508bb8>=0x3c&&_0x508bb8<0xe10)return Math['round'](_0x508bb8/0x3c)+'m';if(_0x508bb8>=0xe10)return Math['round'](_0x508bb8/0xe10)+'h';}function prettyDuration(_0xb037e){var _0x1e8848=_0x1612,_0x386abd=Math[_0x1e8848(0x2a7)](new Date()-_0xb037e*0x3e8)/0x3e8,_0x17f030=_0x386abd/0x1e13380;if(_0x17f030>0x1)return Math['floor'](_0x17f030)+'\x20y';_0x17f030=_0x386abd/0x15180;if(_0x17f030>0x1)return Math[_0x1e8848(0x2a7)](_0x17f030)+'\x20d';_0x17f030=_0x386abd/0xe10;if(_0x17f030>0x1)return Math[_0x1e8848(0x2a7)](_0x17f030)+'\x20h';_0x17f030=_0x386abd/0x3c;if(_0x17f030>0x1)return Math[_0x1e8848(0x2a7)](_0x17f030)+'\x20m';return Math[_0x1e8848(0x2a7)](_0x386abd)+'s';}
+const { createWorker } = Tesseract;
+const worker = await createWorker('eng');
+
+var timeCanvases = null;
+var leftPanelElement = null;
+var saveTopPnlButton = null;
+var saveTopHolderButton = null;
+var fromTsInput = null;
+var toTsInput = null;
+
+// ================================================ Utils
+function showToast(message, duration = 3000) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        Object.assign(container.style, {
+            position: 'fixed',
+            top: '45px',
+            left: '400px',
+            display: 'flex',
+            flexDirection: 'column-reverse',
+            gap: '10px',
+            zIndex: 9999
+        });
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.innerText = message;
+    Object.assign(toast.style, {
+        backgroundColor: '#333',
+        color: '#fff',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+        fontSize: '14px',
+        opacity: 0,
+        transition: 'opacity 0.3s ease'
+    });
+
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.style.opacity = 1;
+    });
+
+    setTimeout(() => {
+        toast.style.opacity = 0;
+        toast.addEventListener('transitionend', () => {
+            toast.remove();
+            if (container.childElementCount === 0) {
+                container.remove();
+            }
+        });
+    }, duration);
+}
+
+function appendSecondToDateString(dateString, start) {
+    switch (dateString.length) {
+        case 7:
+            if (start) {
+                return dateString + '000000';
+            } else {
+                return dateString + '235959';
+            }
+        case 11:
+            if (start) {
+                return dateString + '00'
+            } else {
+                return dateString + '59'
+            }
+        default:
+            return dateString;
+    }
+    
+}
+
+function convertToTimestamp(dateString) {
+    const datePattern = /(\d{2})(\w{3})(\d{2})(\d{2})(\d{2})(?:(\d{2}))?/;
+    const match = dateString.match(datePattern);
+    if (!match) {
+        console.error("Invalid date format:", dateString);
+        return null;
+    }
+    const [_, day, month, year, hour, minute, second] = match;
+    const fullYear = parseInt(year, 10) + 2000;
+    const monthMap = {
+        "jan": 0, "feb": 1, "mar": 2, "apr": 3, "may": 4, "jun": 5,
+        "jul": 6, "aug": 7, "sep": 8, "oct": 9, "nov": 10, "dec": 11
+    };
+    const monthIndex = monthMap[month];
+    if (monthIndex === undefined) {
+        console.error("Invalid month:", month);
+        return null;
+    }
+    const sec = second ? parseInt(second, 10) : 0;
+    const date = new Date(Date.UTC(fullYear, monthIndex, parseInt(day, 10), parseInt(hour, 10), parseInt(minute, 10), sec));
+    date.setUTCHours(date.getUTCHours() - 7);
+    return Math.floor(date.getTime() / 1000);
+}
+
+function formatDate(timestamp) {
+    var date = new Date(timestamp * 1000);
+    return date.toLocaleString('en-GB', { 
+        timeZone: 'Asia/Ho_Chi_Minh',
+        // year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+}
+
+function round(value, decimals) {
+    return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+async function waitUtils(condition, timeout) {
+    return new Promise((resolve, reject) => {
+        const interval = setInterval(() => {
+            if (condition()) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 1000);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            reject(new Error('Timeout waiting for condition'));
+        }, timeout);
+    });
+}
+
+// ================================================ HTML Utils
+function addStyleToHead(css) {
+    const style = document.createElement('style');
+    style.innerHTML = css;
+    document.head.appendChild(style);
+}
+
+function setupLeftContainer(element) {
+    // let width = '400px';
+    // element.innerHTML = '';
+    // element.style.width = width;
+    // element.parentElement.style.width = width;
+    // element.parentElement.parentElement.style.width = width;
+    element.style.fontSize = '10px';
+    element.style.overflowY = 'scroll';
+    element.style.overflowX = 'hidden';
+}
+
+function setupHeaderStyle(element) {
+    element.style.width = '100%';
+    element.style.height = '30px';
+    element.style.color = 'white';
+    element.style.paddingLeft = '10px';
+}
+
+function createButton(id, title) {
+    let button = document.createElement('button');
+    button.id = id;
+    button.innerHTML = title;
+    button.style.border = "1px solid white";
+    button.style.padding = "2px";
+    return button;
+}
+
+function createInputText(id) {
+    let input = document.createElement('input');
+    input.id = id;
+    input.type = 'text';
+    input.style.border = "1px solid white";
+    input.style.padding = "2px";
+    input.style.width = '85px';
+    input.style.height = '20px';
+    input.style.color = 'white';
+    input.style.backgroundColor = '#2b2d33';
+    input.style.fontSize = '10px';
+    input.style.marginLeft = '2px';
+    input.classList.add('custom-placeholder');
+    return input;
+}
+
+function createHeaderPanel() {
+    let header = document.createElement('div');
+    header.id = 'action-header';
+    setupHeaderStyle(header);
+
+    saveTopSoonButton = createButton('save-top-soon-btn', `💾 #Soon`)
+    saveTopSoonButton.onclick = handleSaveTopSoonButton
+    header.appendChild(saveTopSoonButton);
+
+    saveTopPnlButton = createButton('save-top-pnl-btn', `💾 #PNLs`)
+    saveTopPnlButton.onclick = handleSaveTopPnlButton
+    header.appendChild(saveTopPnlButton);
+
+    saveTopHolderButton = createButton('save-top-holder-btn', `💾 #Holders`)
+    saveTopHolderButton.onclick = handleSaveTopHolderButton
+    header.appendChild(saveTopHolderButton);
+
+    fromTsInput = createInputText('from-ts');
+    fromTsInput.placeholder = 'Type \"s\" to fill';
+    header.appendChild(fromTsInput);
+
+    toTsInput = createInputText('to-ts');
+    toTsInput.placeholder = 'Type \"e\" to fill';;
+    header.appendChild(toTsInput);
+
+    let filterButton = createButton('filter-btn', `lọc`);
+    filterButton.style.marginLeft = '2px';
+    filterButton.onclick = handleTapCustomFilter;
+    header.appendChild(filterButton);
+
+    return header;
+}
+
+function createLeftPanel() {
+    let element = document.createElement('div');
+    element.id = 'left-panel';
+    element.style.width = '100%';
+    element.style.height = '100%';
+    element.style.color = 'white';
+    element.style.fontSize = '11px';
+    element.style.paddingLeft = '10px';
+    return element;
+}
+
+// ================================================ Networks
+async function postWallets(chain, wallets) {
+    let chainValue = chain === 'solana' ? 'sol' : chain;
+
+    const formData = new URLSearchParams();
+    formData.append('chain', chainValue);
+    for (let i = 0; i < wallets.length; i++) {
+        formData.append(`items`, wallets[i]);
+    }
+    try {
+        const response = await fetch('https://xbase.site/wls/add-wallet-redis-manual', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.text();
+        showToast(`✅ ${result} wallets saved!`);
+        return result;
+    } catch (error) {
+        showToast(`❌ Error posting wallets: ${error}`);
+        throw error;
+    }
+}
+
+async function fetchTransactions(chain, tokenId, timestamp, timestampAtLater) {
+    var amount = 100;
+    var fetchUrl = null;
+    
+    if (chain === 'base' || chain == 'eth') fetchUrl = `https://gmgn.ai/api/v1/token_trades/${chain}/${tokenId}?limit=${amount}&from=${timestamp}&to=${timestampAtLater}&revert=false`;
+    else fetchUrl = `https://gmgn.ai/vas/api/v1/token_trades/${chain}/${tokenId}?limit=${amount}&from=${timestamp}&to=${timestampAtLater}&revert=false`;;
+    
+    console.log("Fetch URL: " + fetchUrl);
+    var allItems = [];
+    let items = await fetch(fetchUrl).then(response => response.json()).then(data => data.data.history);
+    if (items.length === 0) {
+        addLog('❌ No items found');
+        return [];
+    }
+
+    addLog(`+${items.length} items..`);
+    allItems.push(...items);
+    let toTimestamp = items[items.length - 1].timestamp;
+    while (true) {
+
+        if (chain === 'base' || chain == 'eth') fetchUrl = `https://gmgn.ai/api/v1/token_trades/${chain}/${tokenId}?limit=${amount}&from=${timestamp}&to=${toTimestamp}&revert=false`;
+        else fetchUrl = `https://gmgn.ai/vas/api/v1/token_trades/${chain}/${tokenId}?limit=${amount}&from=${timestamp}&to=${toTimestamp}&revert=false`;
+        items = await fetch(fetchUrl).then(response => response.json()).then(data => data.data.history);
+        if (items.length === 0) {
+            break;
+        }
+        addLog(`+${items.length} items..`);
+        allItems.push(...items);
+        if (toTimestamp === items[items.length - 1].timestamp) {
+            break;
+        }
+        toTimestamp = items[items.length - 1].timestamp;
+    }
+    allItems = allItems.reverse();
+    return allItems;
+}
+
+async function fetchTopPnlTraders(chain, tokenId) {
+    const fetchUrl = `https://gmgn.ai/vas/api/v1/token_traders/${chain}/${tokenId}?limit=100&orderby=realized_profit&direction=desc`;
+    const response = await fetch(fetchUrl);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("#pnls", data);
+    return data.data.list;
+}
+
+async function fetchTopHolders(chain, tokenId) {
+    const fetchUrl = `https://gmgn.ai/vas/api/v1/token_holders/${chain}/${tokenId}?limit=100&cost=20&orderby=amount_percentage&direction=desc`;
+    const response = await fetch(fetchUrl);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("#holders", data);
+    return data.data.list;
+}
+
+async function fetchTopSoon(chain, tokenId) {
+    var fetchUrl = `https://gmgn.ai/vas/api/v1/token_trades/${chain}/${tokenId}?os=web&limit=100&maker=&revert=true`;
+    if(chain == 'eth' || chain == 'base') fetchUrl = `https://gmgn.ai/api/v1/token_trades/${chain}/${tokenId}?os=web&limit=100&maker=&revert=true`;
+    const response = await fetch(fetchUrl);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("#soon", data);
+    return data.data.history;
+}
+
+// ================================================ Other reusable functions
+function addLog(message) {
+    leftPanelElement.innerHTML += message + ' ';
+}
+
+function cropTransparent(image) {
+    return new Promise((resolve) => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+
+        let top = canvas.height, bottom = 0, left = canvas.width, right = 0;
+
+        for (let y = 0; y < canvas.height; y++) {
+            for (let x = 0; x < canvas.width; x++) {
+                let alpha = pixels[(y * canvas.width + x) * 4 + 3];
+                if (alpha > 0) {
+                    if (x < left) left = x;
+                    if (x > right) right = x;
+                    if (y < top) top = y;
+                    if (y > bottom) bottom = y;
+                }
+            }
+        }
+
+        if (right < left || bottom < top) {
+            resolve(null);
+            return;
+        }
+
+        const newWidth = right - left + 1;
+        const newHeight = bottom - top + 1;
+        const croppedCanvas = document.createElement("canvas");
+        const croppedCtx = croppedCanvas.getContext("2d");
+
+        croppedCanvas.width = newWidth;
+        croppedCanvas.height = newHeight;
+        croppedCtx.drawImage(
+            canvas,
+            left, top, newWidth, newHeight,
+            0, 0, newWidth, newHeight
+        );
+
+        resolve(croppedCanvas.toDataURL("image/png"));
+    });
+}
+
+function extractChainAndTokenId(url) {
+    const processedUrl = url.split('?')[0];
+    if (processedUrl.indexOf("token") >= 0) {
+        const urlParts = processedUrl.split('/');
+        const tokenId = urlParts.pop().split('_').pop();
+        urlParts.pop();
+        const chain = urlParts.pop();
+        return {
+            chain: chain,
+            tokenId: tokenId
+        };
+    }
+    return null;
+}
+
+async function canvasToTextUsingTesseract(canvas) {
+    const croppedCanvas = await cropTransparent(canvas);
+    if (croppedCanvas === null) {
+        console.error("Cropped canvas is null");
+        return null;
+    }
+    // console.log("❇️ ❇️ ❇️", croppedCanvas);
+    const { data: { text } } = await worker.recognize(croppedCanvas);
+    return text;
+}
+
+function getTradingViewFrame() {
+    var iframes = document.getElementsByTagName('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+        var iframe = iframes[i];
+        if (iframe.id.includes('tradingview_')) {
+            return iframe;
+        }
+    }
+    return null;
+}
+
+function renderHtmlTable(items, chain) {
+
+    //list ví mua theo cụm
+    
+    bgroup = bgroup.split('\n');
+    // console.log("bgroup", bgroup);
+
+
+    var html = `
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="border-bottom: 2px solid #2b2d33;">
+                <th style="border: 1px solid #2b2d33; width: 90px; padding-left: 10px;">Date</th>
+                <th style="border: 1px solid #2b2d33; text-align: center;">Maker</th>
+                <th style="border: 1px solid #2b2d33; text-align: center;">Type</th>
+                <th style="border: 1px solid #2b2d33; text-align: right;">$Buy</th>
+                <th style="border: 1px solid #2b2d33; text-align: right;">$Pnl</th>
+                <th style="border: 1px solid #2b2d33; text-align: center; width: 53px;">Tx</th>
+            </tr>
+        </thead>
+        <tbody>
+    `;
+
+    //lấy ra maker để hightlight
+    const parsedUrl = new URL(window.location);
+    const urlMaker = parsedUrl.searchParams.get("wl");
+    const refcpy = parsedUrl.searchParams.get("ref");
+    console.log("urlMaker", urlMaker);
+
+
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        item.unrealized_profit = parseFloat(item.unrealized_profit);
+        item.realized_profit = parseFloat(item.realized_profit);
+        var maker = item.maker;
+        var makerShort = maker.substring(0, 3) + '...' + maker.substring(maker.length - 4);
+        if(maker == refcpy) makerShort+= " 👥";
+        if(maker == urlMaker) makerShort+= " 🔹";
+        if(bgroup.includes(maker)) makerShort+= " ⚠️"; //nếu là ví mua cụm
+        var formattedDate = formatDate(item.timestamp);
+        var textColor = item.realized_profit < 0 ? '#e26d81':'#5dbd6c';
+        var eventTextColor = item.event == 'buy' ? 'green':'red';
+        var tx = item.tx_hash;
+        var baseTx = '';
+        if (chain === 'bsc') {
+            baseTx = 'https://bscscan.com/tx';
+        }else if (chain === 'sol') {
+            baseTx = 'https://solscan.io/tx';
+        }else if (chain === 'eth') {
+            baseTx = 'https://etherscan.io/tx';
+        }else if (chain === 'base') {
+            baseTx = 'https://basescan.org/tx';
+        }
+
+        html += `
+            <tr style="border-bottom: 1px solid #2b2d33;">
+                <td style="border: 1px solid #2b2d33; padding-left: 5px;"> ${formattedDate}</td>
+                <td style="border: 1px solid #2b2d33; padding-left: 4px;">
+                    <a href="https://gmgn.ai/${chain}/address/${item.maker}" target="_blank">${makerShort}</a>
+                    <span style="float: right;">${replaceText(item.maker_token_tags.toString())}</span>
+                </td>
+                <td style="border: 1px solid #2b2d33; text-align: center; color: ${eventTextColor}; font-weight: bold;">${item.event.substring(0,1)}</td>
+                <td style="border: 1px solid #2b2d33; text-align: right;">${prettyPrintNum(item.amount_usd)}</td>
+                <td style="border: 1px solid #2b2d33; text-align: right; ">
+                    <span style="float: left; opacity: 0.8;">${ (item.unrealized_profit != 0) ? prettyPrintNum(item.unrealized_profit) : ''}</span>
+                    <span style="color: ${textColor};">${prettyPrintNum(item.realized_profit)}</span>
+            
+                </td>
+                <td style="border: 1px solid #2b2d33; text-align: let; padding-left: 3px;">
+                    <a href="${baseTx}/${tx}" target="_blank">${chain}tx</a>
+                    <small style="float: right; margin: 3px 3px 0 0">`;
+                        if(item.maker_tags.length > 0){
+                            item.maker_tags.forEach(async (tag) => {
+                                if(tag == 'gmgn') html += `<img src="/static/img/brand/gmgn_sm.png" style="width: 9px; height: 9px; float: right;"/>`;
+                                if(tag == 'photon') html += `<img src="/static/img/brand/photon_sm.png" style="width: 9px; height: 9px; float: right;"/>`;
+                                if(tag == 'bullx') html += `<img src="/static/img/brand/bullx_sm.png" style="width: 9px; height: 9px; float: right;"/>`;
+                                if(tag == 'trojan') html += `<img src="/static/img/brand/trojan_sm.png" style="width: 9px; height: 9px; float: right;"/>`;
+                            });
+                        }
+                    html += `</small>
+                </td>
+            </tr>
+        `;
+    }
+
+    html += `
+        </tbody>
+    </table>
+    `;
+
+    return html;
+}
+
+async function getCurrentSelectedTimeOnChart() {
+    if (!timeCanvases) {
+        console.log('❌ timeCanvases is not ready');
+        return null;
+    }
+    for (var i = 0; i < timeCanvases.length; i++) {
+        var timeCanvas = timeCanvases[i];
+        var text = await canvasToTextUsingTesseract(timeCanvas);
+        if (text === null) {
+            console.log("Text is null");
+            continue;
+        }
+
+        console.log("Got text from canvas: " + text);
+
+        var dateText = text.replace(/'/g, ' ');
+        dateText = dateText.replace(/ /g, '').replace(/:/g, '');
+        dateText = dateText.trim();
+        console.log("Date text: " + dateText);
+
+        if (dateText.length != 7 && dateText.length != 11 && dateText.length != 13) {
+            console.log("Date text is invalid:", dateText, dateText.length);
+            continue;
+        }
+        return dateText.toLowerCase();
+    }
+    return null;
+}
+
+async function handleTapQuickFilter() {
+    leftPanelElement.innerHTML = '';
+    let dateText = await getCurrentSelectedTimeOnChart();
+    if (dateText === null) {
+        addLog('❌ Failed to get date text from canvas');
+        return;
+    }
+    
+    var timestamp = convertToTimestamp(dateText);
+    var timestampAtLater = timestamp + 3 * 60;
+    var chainToken = extractChainAndTokenId(window.location.href);
+    var tokenId = chainToken.tokenId;
+    var chain = chainToken.chain;
+    await filterTransactions(timestamp, timestampAtLater, tokenId, chain);
+}
+
+async function handleTapQuickFilterToNow() {
+    leftPanelElement.innerHTML = '';
+    let dateText = await getCurrentSelectedTimeOnChart();
+    if (dateText === null) {
+        addLog('❌ Failed to get date text from canvas');
+        return;
+    }
+    
+    var timestamp = convertToTimestamp(dateText);
+    var timestampAtLater = Math.floor(Date.now() / 1000);
+    var chainToken = extractChainAndTokenId(window.location.href);
+    var tokenId = chainToken.tokenId;
+    var chain = chainToken.chain;
+    await filterTransactions(timestamp, timestampAtLater, tokenId, chain);
+}
+
+async function filterTransactions(timestamp, timestampAtLater, tokenId, chain) {
+    var historyItems = await fetchTransactions(chain, tokenId, timestamp, timestampAtLater);
+    let wallets = historyItems.map(item => item.maker);
+    wallets = [...new Set(wallets)];
+
+    addLog(`<br/>🔍 Found ${historyItems.length} unique transactions.`);
+    addLog(`<br/>🔍 Found ${wallets.length} unique wallets &nbsp; &nbsp; `);
+
+    // let saveButton = document.createElement('button');
+    // saveButton.id = 'save-solbase-btn';
+    
+    // let allWallets = wallets
+    // saveButton.innerHTML = `Save ${allWallets.length} to Solbase`;
+    // saveButton.style.border = "1px solid white";
+    // saveButton.style.padding = "2px";
+    // addLog(saveButton.outerHTML);
+
+    addLog(renderHtmlTable(historyItems, chain));
+
+    saveButton = document.getElementById('save-solbase-btn');
+    saveButton.onclick = async function() {
+        const chunkSize = 999;
+        const walletChunks = [];
+        for (let i = 0; i < allWallets.length; i += chunkSize) {
+            walletChunks.push(allWallets.slice(i, i + chunkSize));
+        }
+        saveButton.innerHTML = `⏳ Saving...${allWallets.length} wallets`;
+        try {
+            for (const chunk of walletChunks) {
+                await postWallets(chain, chunk);
+            }
+        } catch (error) {
+            addLog("❌ Error saving wallets");
+        }
+        saveButton.innerHTML = "✅ Saved!";
+        setTimeout(() => {
+            saveButton.innerHTML = "Save to Solbase";
+        }, 1000);
+    }
+}
+
+// ================================================ Event handlers
+function registerEvents(documents) {
+    documents.forEach(document => {
+        document.addEventListener("keydown", handleTapFEvent);
+    });
+}
+
+async function handleTapFEvent(event) {
+    if (event.key === 'f') {
+        await handleTapQuickFilter();
+    } else if (event.key === 'd') {
+        await handleTapQuickFilterToNow();
+    } else if (event.key === 's') {
+        console.log("On tap s")
+        fromTsInput.value = 'Please wait ...';
+        let dateText = await getCurrentSelectedTimeOnChart();
+        if (dateText === null) {
+            showToast('❌ Failed to get date text from canvas');
+            return;
+        }
+        fromTsInput.value = appendSecondToDateString(dateText, true);
+    } else if (event.key === 'e') {
+        console.log("On tap e")
+        toTsInput.value = 'Please wait ...';
+        let dateText = await getCurrentSelectedTimeOnChart();
+        if (dateText === null) {
+            showToast('❌ Failed to get date text from canvas');
+            return;
+        }
+        toTsInput.value = appendSecondToDateString(dateText, false);
+    } else if (event.key === 'r') {
+        console.log("On tap r")
+        await handleTapCustomFilter();
+    }
+}
+
+async function handleSaveTopPnlButton() {
+    const chainToken = extractChainAndTokenId(window.location.href);
+    const tokenId = chainToken.tokenId;
+    const chain = chainToken.chain;
+    let topPnlTraders = await fetchTopPnlTraders(chain, tokenId);
+    let wallets = topPnlTraders.map(item => item.address);
+    wallets = [...new Set(wallets)];
+    saveTopPnlButton.innerHTML = `⏳ Saving...${wallets.length} wallets`;
+    try {
+        await postWallets(chain, wallets);
+    } catch (error) {
+        addLog("❌ Error saving wallets");
+    }
+    saveTopPnlButton.innerHTML = "✅ Saved!";
+    setTimeout(() => {
+        saveTopPnlButton.innerHTML = "✔ PNL";
+    }, 1000);
+}
+
+async function handleSaveTopHolderButton() {
+    const chainToken = extractChainAndTokenId(window.location.href);
+    const tokenId = chainToken.tokenId;
+    const chain = chainToken.chain;
+    let traders = await fetchTopHolders(chain, tokenId);
+    let wallets = traders.map(item => item.address);
+    wallets = [...new Set(wallets)];
+    saveTopHolderButton.innerHTML = `⏳ Saving...${wallets.length} wallets`;
+    try {
+        await postWallets(chain, wallets);
+    } catch (error) {
+        addLog("❌ Error saving wallets");
+    }
+    saveTopHolderButton.innerHTML = "✅ Saved!";
+    setTimeout(() => {
+        saveTopHolderButton.innerHTML = "✔ Holders";
+    }, 1000);
+}
+
+async function handleSaveTopSoonButton() {
+    const chainToken = extractChainAndTokenId(window.location.href);
+    const tokenId = chainToken.tokenId;
+    const chain = chainToken.chain;
+    let traders = await fetchTopSoon(chain, tokenId);
+    let wallets = traders.map(item => item.maker);
+    wallets = [...new Set(wallets)];
+    saveTopSoonButton.innerHTML = `⏳ Saving...${wallets.length} wallets`;
+    try {
+        await postWallets(chain, wallets);
+    } catch (error) {
+        addLog("❌ Error saving wallets");
+    }
+    saveTopSoonButton.innerHTML = "✅ Saved!";
+    setTimeout(() => {
+        saveTopSoonButton.innerHTML = "✔ Soon";
+    }, 1000);
+}
+
+function getCurrentTimeFormat() {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.toLocaleString('en-US', { month: 'short' }).toLowerCase();
+    var year = date.getFullYear().toString().slice(-2);
+    var hour = date.getHours().toString().padStart(2, '0');
+    var minute = date.getMinutes().toString().padStart(2, '0');
+    var seconds = date.getSeconds().toString().padStart(2, '0');
+    return `${day}${month}${year}${hour}${minute}${seconds}`;
+}
+
+async function handleTapCustomFilter() {
+    let fromTs = fromTsInput.value;
+    if (fromTs === '') {
+        showToast('❌ From timestamp is empty');
+        return;
+    }
+    let fromTimestamp = convertToTimestamp(fromTs);
+    if (fromTimestamp === null) {
+        showToast('❌ From timestamp is invalid');
+        return;
+    }
+    let toTs = toTsInput.value;
+    if (toTs === '') {
+        showToast('❌ To timestamp is empty');
+        return
+    }
+
+    let toTimestamp = convertToTimestamp(toTs);
+    if (toTimestamp === null) {
+        showToast('❌ To timestamp is invalid');
+        return;
+    }
+    if (fromTimestamp > toTimestamp) {
+        showToast('❌ From timestamp is greater than to timestamp');
+        return;
+    }
+    leftPanelElement.innerHTML = '';
+    var timestamp = fromTimestamp;
+    var timestampAtLater = toTimestamp;
+    var chainToken = extractChainAndTokenId(window.location.href);
+    var tokenId = chainToken.tokenId;
+    var chain = chainToken.chain;
+    await filterTransactions(timestamp, timestampAtLater, tokenId, chain);
+}
+
+// ================================================ Main function
+async function main() {
+
+    addStyleToHead(`
+        #__next{padding-left: 400px;}
+        #left-panel-container{width: 400px; height: 100%; left: 0; top: 10px; font-size: 12px; border-right: 1px solid #222; position: fixed; }
+        .custom-placeholder::placeholder { font-size: 11px; }
+    `);
+
+    var chainToken = extractChainAndTokenId(window.location.href);
+    var tokenId = chainToken.tokenId;
+    var chain = chainToken.chain;
+
+    // Setup left panel
+    var footer = document.querySelector('footer');
+    if(footer) footer.innerHTML = `<div id="left-panel-container" style="position: fixed;"></div>`+ footer.innerHTML;
+    var leftContainer = document.getElementById('left-panel-container'); console.log("leftContainer", leftContainer);
+    
+    setupLeftContainer(leftContainer);
+    // let header = createHeaderPanel();
+    // leftContainer.appendChild(header);
+    
+    leftPanelElement = createLeftPanel();
+    leftContainer.appendChild(leftPanelElement);
+
+    addLog('<span style="opacity: 0.8"><small>✅</small> 1/2: Left panel is ok.</span><br/>');
+    
+
+    // Getting tradingview frame
+    try {
+        await waitUtils(() => getTradingViewFrame() != null, 10000);
+    } catch (error) {
+        console.error("Error waiting for TradingView frame:", error);
+        window.location.reload(true);
+        return;
+    }
+    var tradingViewFrame = getTradingViewFrame();
+    
+    await waitUtils(() => tradingViewFrame.contentDocument.readyState === 'complete', 10000);
+    await waitUtils(() => tradingViewFrame.contentDocument.getElementsByClassName('chart-markup-table time-axis').length > 0, 10000);
+    
+    addLog("<span style='opacity: 0.8'><small>✅</small> 2/2: ChartView is ok. <br/>Press \"f\" to fetch transactions.</span>");
+    var timeAxisElement = tradingViewFrame.contentDocument.getElementsByClassName('chart-markup-table time-axis')[0];
+    if (timeAxisElement == null) {
+        addLog('❌ timeAxisElement is not ready');
+        return;
+    }
+
+    timeCanvases = timeAxisElement.getElementsByTagName('canvas');
+    console.log(`Found ${timeCanvases.length} canvases`);
+    registerEvents([tradingViewFrame.contentDocument]);
+}
+
+// ================================================ Run the script
+main();
+
+
+
+//format eth value
+function replaceText(text){
+    text = text.replaceAll("dev_team", '👥');
+    text = text.replaceAll("top_holder", '🏅');
+    text = text.replaceAll("sniper", '⌖');
+    text = text.replaceAll(",", ' ');
+    return text;
+}
+
+
+//in số nhiều chuẩn
+function prettyPrintNum(num){
+    if(num < -1) return prettyNum(Math.round(num));
+    if(num < 0.1) return  formatNum2(num);
+    else if(num >= 0.1 && num < 1) return formatNum1(num);
+    else return prettyNum(Math.round(num));
+}
+
+//format eth value
+function formatNum(num){
+    return Math.round( num * 1000 ) / 1000;
+}
+
+function formatNum1(num){
+    return Math.round( num * 10 ) / 10;
+}
+
+function formatNum2(num){
+    return Math.round( num * 100 ) / 100;
+}
+
+function prettyNum(num){
+    num = Math.round(num);
+    return new Intl.NumberFormat().format(num);
+}
+
+function kFormatter(num) {
+    if(num > 999999999 || num < -999999999) return "tooBig";
+    else if(num > 999999 || num < -999999) return Math.sign(num)*((Math.abs(num)/1000000).toFixed(1)) + 'M';
+    else return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.round(Math.sign(num)*Math.abs(num))
+}
+
+function prettyPeriod(duration){
+
+    var seconds = Math.floor(duration);
+    var interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " y";
+    
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " d";
+    
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " h";
+    
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " m";
+    
+    return Math.floor(seconds) + "s";
+}
+
+function prettyPeroid(duration){
+    if(duration < 60) return Math.round(duration)+'s';
+    if(duration >= 60 && duration <3600) return Math.round(duration/60)+'m';
+    if(duration >= 3600) return Math.round(duration/3600)+'h';
+}
+
+function prettyDuration(created){
+            
+    var seconds = Math.floor(new Date() - created*1000)/1000;
+
+    var interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " y";
+    
+    //skip months
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " d";
+    
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " h";
+
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " m";
+    
+    return Math.floor(seconds) + "s";
+
+}
+
